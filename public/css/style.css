@@ -1,0 +1,182 @@
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Sora:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap");
+
+:root {
+  --ink: #1b1420;
+  --surface: #251a2e;
+  --surface-raised: #2f2138;
+  --line: #3d2c49;
+  --text: #f3eaf7;
+  --text-dim: #b8a4c6;
+  --wisteria: #9b7ebd;
+  --wisteria-bright: #b79fd6;
+  --sakura: #e8a6c1;
+  --success: #7fbf9e;
+  --danger: #e08a8a;
+  --radius: 14px;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--ink);
+  background-image:
+    radial-gradient(ellipse 900px 500px at 15% -10%, rgba(155, 126, 189, 0.18), transparent),
+    radial-gradient(ellipse 700px 500px at 100% 10%, rgba(232, 166, 193, 0.10), transparent);
+  color: var(--text);
+  font-family: "Sora", system-ui, sans-serif;
+  line-height: 1.5;
+}
+
+h1, h2, h3, .display {
+  font-family: "Fraunces", Georgia, serif;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  margin: 0;
+}
+
+.mono { font-family: "JetBrains Mono", monospace; }
+
+a { color: var(--wisteria-bright); }
+
+.eyebrow {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--sakura);
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border: none;
+  border-radius: 999px;
+  padding: 0.85rem 1.6rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, opacity 0.15s ease;
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--sakura);
+  outline-offset: 2px;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--wisteria), var(--sakura));
+  color: #1b1420;
+  box-shadow: 0 8px 24px -8px rgba(155, 126, 189, 0.6);
+}
+.btn-primary:hover { transform: translateY(-1px); box-shadow: 0 12px 28px -8px rgba(155, 126, 189, 0.75); }
+.btn-primary:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+
+.btn-ghost {
+  background: transparent;
+  border: 1px solid var(--line);
+  color: var(--text);
+}
+.btn-ghost:hover { border-color: var(--wisteria); }
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* ── Signature element: wisteria petals drifting behind the QR frame ── */
+.petal-frame {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius);
+}
+.petal {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background: var(--sakura);
+  border-radius: 60% 40% 60% 40%;
+  opacity: 0.55;
+  animation: drift 9s linear infinite;
+}
+.petal:nth-child(1) { left: 8%;  animation-delay: 0s;   background: var(--wisteria-bright); }
+.petal:nth-child(2) { left: 30%; animation-delay: 2.2s; }
+.petal:nth-child(3) { left: 55%; animation-delay: 4.5s; background: var(--wisteria-bright); }
+.petal:nth-child(4) { left: 75%; animation-delay: 1.3s; }
+.petal:nth-child(5) { left: 92%; animation-delay: 5.8s; background: var(--wisteria-bright); }
+
+@keyframes drift {
+  0%   { transform: translateY(-20px) rotate(0deg); opacity: 0; }
+  10%  { opacity: 0.55; }
+  90%  { opacity: 0.4; }
+  100% { transform: translateY(340px) rotate(200deg); opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .petal { animation: none; display: none; }
+  html { scroll-behavior: auto; }
+}
+
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.3rem 0.75rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-family: "JetBrains Mono", monospace;
+  font-weight: 500;
+}
+.status-pending  { background: rgba(232, 166, 193, 0.15); color: var(--sakura); }
+.status-success  { background: rgba(127, 191, 158, 0.18); color: var(--success); }
+.status-expired,
+.status-cancelled { background: rgba(224, 138, 138, 0.15); color: var(--danger); }
+
+::selection { background: var(--wisteria); color: var(--ink); }
+
+input {
+  font-family: inherit;
+  background: var(--ink);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 0.75rem 1rem;
+  color: var(--text);
+  font-size: 1rem;
+  width: 100%;
+}
+input:focus-visible { outline: 2px solid var(--wisteria); outline-offset: 1px; }
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+th, td {
+  text-align: left;
+  padding: 0.7rem 0.9rem;
+  border-bottom: 1px solid var(--line);
+}
+th {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+tr:hover td { background: rgba(155, 126, 189, 0.06); }
