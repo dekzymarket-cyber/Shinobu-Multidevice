@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Shinobu MD — Bot WhatsApp All-in-One</title>
+<link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+
+<header class="container" style="display:flex; justify-content:space-between; align-items:center; padding-top:1.75rem; padding-bottom:1.75rem;">
+  <div style="display:flex; align-items:center; gap:0.6rem;">
+    <span style="font-size:1.4rem;">🦋</span>
+    <span class="display" style="font-size:1.15rem;" id="brandName">Shinobu MD</span>
+  </div>
+  <nav style="display:flex; gap:1.5rem; align-items:center; font-size:0.9rem;">
+    <a href="#topup" style="text-decoration:none; color:var(--text-dim);">Topup</a>
+    <a href="#fitur" style="text-decoration:none; color:var(--text-dim);">Fitur</a>
+    <a id="waChannelLink" href="#" target="_blank" style="text-decoration:none; color:var(--text-dim);">Channel WA</a>
+  </nav>
+</header>
+
+<!-- ── HERO ─────────────────────────────────────────── -->
+<section class="container" style="padding: 3rem 1.5rem 4rem;">
+  <div style="display:grid; grid-template-columns: 1.1fr 0.9fr; gap: 3rem; align-items:center;">
+    <div>
+      <p class="eyebrow">Bot WhatsApp · AI · Store · Auto Order</p>
+      <h1 class="display" style="font-size: clamp(2.2rem, 5vw, 3.4rem); margin-top:0.6rem; line-height:1.08;">
+        Satu bot,<br/>segala urusan grup &amp; toko lu.
+      </h1>
+      <p style="color:var(--text-dim); font-size:1.05rem; max-width:34ch; margin-top:1.1rem;" id="tagline">
+        Sticker maker, AI chat, game, sampai sistem order otomatis — tinggal top up saldo, langsung jalan.
+      </p>
+      <div style="display:flex; gap:0.9rem; margin-top:2rem; flex-wrap:wrap;">
+        <a href="#topup" class="btn btn-primary">Top Up Saldo →</a>
+        <a id="waGroupLink" href="#" target="_blank" class="btn btn-ghost">Gabung Grup WA</a>
+      </div>
+    </div>
+
+    <div class="card petal-frame" style="text-align:center;">
+      <span class="petal"></span><span class="petal"></span><span class="petal"></span><span class="petal"></span><span class="petal"></span>
+      <div style="position:relative; z-index:1;">
+        <p class="eyebrow">.menu</p>
+        <p style="font-family:'JetBrains Mono', monospace; font-size:0.85rem; color:var(--text-dim); text-align:left; margin-top:0.75rem; white-space:pre-line;">
+🦋 AI &amp; CHAT
+🎮 GAME &amp; RPG
+🖼️ STICKER &amp; MAKER
+🛒 STORE &amp; ORDER
+🛠️ TOOLS &amp; GROUP</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FITUR ────────────────────────────────────────── -->
+<section id="fitur" class="container" style="padding: 2rem 1.5rem 4rem;">
+  <p class="eyebrow">Fitur</p>
+  <h2 class="display" style="font-size:1.8rem; margin-top:0.5rem; margin-bottom:1.75rem;">Yang bisa Shinobu kerjain</h2>
+  <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:1rem;">
+    <div class="card"><h3 style="font-size:1.05rem;">🤖 AI Assistant</h3><p style="color:var(--text-dim); font-size:0.9rem; margin-top:0.5rem;">Chat AI langsung di WhatsApp buat jawab, bikin gambar, atau nemenin ngobrol.</p></div>
+    <div class="card"><h3 style="font-size:1.05rem;">🖼️ Sticker &amp; Maker</h3><p style="color:var(--text-dim); font-size:0.9rem; margin-top:0.5rem;">Sticker maker, poster, banner, sampai efek teks 3D — tinggal chat.</p></div>
+    <div class="card"><h3 style="font-size:1.05rem;">🎮 Game &amp; RPG</h3><p style="color:var(--text-dim); font-size:0.9rem; margin-top:0.5rem;">Sistem RPG, koin, exp, dan mini game buat rame-rame di grup.</p></div>
+    <div class="card"><h3 style="font-size:1.05rem;">🛒 Store Otomatis</h3><p style="color:var(--text-dim); font-size:0.9rem; margin-top:0.5rem;">Top up saldo via QRIS real-time, langsung kepakai buat fitur premium.</p></div>
+  </div>
+</section>
+
+<!-- ── TOPUP ────────────────────────────────────────── -->
+<section id="topup" class="container" style="padding: 2rem 1.5rem 5rem;">
+  <p class="eyebrow">Top Up</p>
+  <h2 class="display" style="font-size:1.8rem; margin-top:0.5rem; margin-bottom:0.4rem;">Isi saldo pakai QRIS</h2>
+  <p style="color:var(--text-dim); font-size:0.95rem; margin-bottom:2rem;">Scan, bayar, saldo otomatis kecatat. Ga perlu kirim bukti transfer manual.</p>
+
+  <div class="card" style="max-width:480px;">
+    <!-- STEP 1: input amount -->
+    <div id="formStep">
+      <label for="amount" style="font-size:0.85rem; color:var(--text-dim);">Nominal top up (Rp500 – Rp1.000.000)</label>
+      <div style="display:flex; gap:0.6rem; margin-top:0.5rem;">
+        <input id="amount" type="number" min="500" max="1000000" step="500" placeholder="cth: 50000" />
+        <button id="createBtn" class="btn btn-primary" style="white-space:nowrap;">Buat QRIS</button>
+      </div>
+      <div style="display:flex; gap:0.5rem; margin-top:0.75rem; flex-wrap:wrap;">
+        <button class="btn btn-ghost quick-amount" data-amt="10000" style="padding:0.4rem 0.9rem; font-size:0.8rem;">10rb</button>
+        <button class="btn btn-ghost quick-amount" data-amt="25000" style="padding:0.4rem 0.9rem; font-size:0.8rem;">25rb</button>
+        <button class="btn btn-ghost quick-amount" data-amt="50000" style="padding:0.4rem 0.9rem; font-size:0.8rem;">50rb</button>
+        <button class="btn btn-ghost quick-amount" data-amt="100000" style="padding:0.4rem 0.9rem; font-size:0.8rem;">100rb</button>
+      </div>
+      <p id="formError" style="color:var(--danger); font-size:0.85rem; margin-top:0.75rem; display:none;"></p>
+    </div>
+
+    <!-- STEP 2: QR display + polling -->
+    <div id="qrStep" style="display:none; text-align:center;">
+      <span class="status-pill status-pending" id="statusPill">⏳ Menunggu pembayaran</span>
+      <div class="petal-frame" style="margin-top:1.25rem; background:var(--surface-raised); border-radius:12px; padding:1.25rem;">
+        <span class="petal"></span><span class="petal"></span><span class="petal"></span>
+        <img id="qrImage" src="" alt="QRIS" style="width:100%; max-width:260px; border-radius:8px; position:relative; z-index:1;" />
+      </div>
+      <p style="margin-top:1rem; font-size:0.9rem; color:var(--text-dim);">Total bayar</p>
+      <p class="mono" style="font-size:1.4rem; font-weight:600;" id="qrAmount">Rp0</p>
+      <p style="font-size:0.75rem; color:var(--text-dim);">ID: <span class="mono" id="qrId"></span></p>
+      <div style="display:flex; gap:0.6rem; margin-top:1.25rem; justify-content:center;">
+        <button id="cancelBtn" class="btn btn-ghost">Batalkan</button>
+        <button id="newBtn" class="btn btn-ghost" style="display:none;">Topup Lagi</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="container" style="padding:2.5rem 1.5rem; border-top:1px solid var(--line); color:var(--text-dim); font-size:0.85rem; text-align:center;">
+  © 2026 Shinobu MD — dibuat buat komunitas. Ada kendala? Gabung grup WA di atas.
+</footer>
+
+<script src="/js/app.js"></script>
+</body>
+    </html>
+        
