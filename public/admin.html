@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Admin — Shinobu MD</title>
+<link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+
+<!-- ── LOGIN GATE ───────────────────────────────────────── -->
+<section id="loginView" class="container" style="min-height:90vh; display:flex; align-items:center; justify-content:center;">
+  <div class="card" style="width:100%; max-width:360px;">
+    <p class="eyebrow">Admin</p>
+    <h1 class="display" style="font-size:1.5rem; margin-top:0.5rem; margin-bottom:1.25rem;">Masuk Dashboard</h1>
+    <label for="password" style="font-size:0.85rem; color:var(--text-dim);">Password</label>
+    <input id="password" type="password" style="margin-top:0.5rem;" placeholder="••••••••" />
+    <button id="loginBtn" class="btn btn-primary" style="width:100%; margin-top:1rem;">Login</button>
+    <p id="loginError" style="color:var(--danger); font-size:0.85rem; margin-top:0.75rem; display:none;"></p>
+  </div>
+</section>
+
+<!-- ── DASHBOARD ────────────────────────────────────────── -->
+<section id="dashView" style="display:none;">
+  <header class="container" style="display:flex; justify-content:space-between; align-items:center; padding:1.75rem 1.5rem;">
+    <div style="display:flex; align-items:center; gap:0.6rem;">
+      <span style="font-size:1.4rem;">🦋</span>
+      <span class="display" style="font-size:1.15rem;">Admin — Shinobu MD</span>
+    </div>
+    <div style="display:flex; gap:1rem; align-items:center;">
+      <a href="/" style="color:var(--text-dim); font-size:0.85rem; text-decoration:none;">← Ke Landing Page</a>
+      <button id="logoutBtn" class="btn btn-ghost" style="padding:0.5rem 1rem; font-size:0.85rem;">Logout</button>
+    </div>
+  </header>
+
+  <div class="container" style="padding-bottom:3rem;">
+    <!-- Stat cards -->
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(180px, 1fr)); gap:1rem; margin-bottom:2rem;">
+      <div class="card">
+        <p class="eyebrow">Total Revenue</p>
+        <p class="mono" style="font-size:1.6rem; font-weight:600; margin-top:0.5rem;" id="statRevenue">Rp0</p>
+      </div>
+      <div class="card">
+        <p class="eyebrow">Order Sukses</p>
+        <p class="mono" style="font-size:1.6rem; font-weight:600; margin-top:0.5rem; color:var(--success);" id="statSuccess">0</p>
+      </div>
+      <div class="card">
+        <p class="eyebrow">Pending</p>
+        <p class="mono" style="font-size:1.6rem; font-weight:600; margin-top:0.5rem; color:var(--sakura);" id="statPending">0</p>
+      </div>
+      <div class="card">
+        <p class="eyebrow">Total Order</p>
+        <p class="mono" style="font-size:1.6rem; font-weight:600; margin-top:0.5rem;" id="statTotal">0</p>
+      </div>
+    </div>
+
+    <!-- Orders table -->
+    <div class="card">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem;">
+        <h2 class="display" style="font-size:1.2rem;">Riwayat Order</h2>
+        <div style="display:flex; gap:0.5rem; align-items:center;">
+          <input id="searchInput" placeholder="Cari ID deposit..." style="width:200px; padding:0.5rem 0.8rem; font-size:0.85rem;" />
+          <button id="refreshBtn" class="btn btn-ghost" style="padding:0.5rem 1rem; font-size:0.85rem;">↻ Refresh</button>
+        </div>
+      </div>
+      <div style="overflow-x:auto;">
+        <table>
+          <thead>
+            <tr>
+              <th>ID Deposit</th>
+              <th>Nominal</th>
+              <th>Status</th>
+              <th>Dibuat</th>
+              <th>Terakhir Dicek</th>
+            </tr>
+          </thead>
+          <tbody id="ordersBody">
+            <tr><td colspan="5" style="text-align:center; color:var(--text-dim); padding:2rem;">Memuat data...</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script src="/js/admin.js"></script>
+</body>
+</html>
